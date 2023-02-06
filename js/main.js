@@ -82,18 +82,47 @@ const team = [
 // Stampare le stesse informazioni su DOM sottoforma di stringhe
 const rowEl = document.getElementById("container-cards");
 
+// for (const member of team) {
+//   console.log(member);
+
+//   //Creiamo l'elemento div colonna, ogni ciclo
+//   const divEl = document.createElement("div");
+//   const print = (divEl.innerHTML = member.name + member.role);
+
+//   rowEl.append(divEl);
+// }
+
+
+
+
+
+// BONUS 1: e // BONUS 2:
+// Trasformare la stringa foto in una immagine effettiva
+// Organizzare i singoli membri in card/schede
+
 for (const member of team) {
   console.log(member);
+
+  //Creiamo l'elemento div colonna, ogni ciclo
   const divEl = document.createElement("div");
-  const print = divEl.innerHTML = member.name + member.role;
-  rowEl.append(divEl);
+  divEl.classList.add("col-12", "col-sm-4");
+
+  //creiamo l'elemento card, da mettere all'interno della colonna
+  const cardEl = document.createElement("div");
+  cardEl.classList.add("card");
+
+  //l'elemento card terrà a sua volta 3 elementi diversi
+  const memberPortrait = document.createElement("img");
+  const memberName = document.createElement("h3");
+  const memberRole = document.createElement("p");
+
+
+  memberPortrait.src = member.img;
+  memberName.innerHTML = member.name;
+  memberRole.innerHTML = member.role;
+  //const print = (divEl.innerHTML = member.name + member.role);
   
+  cardEl.append(memberPortrait, memberName, memberRole);
+  divEl.append(cardEl);
+  rowEl.append(divEl);
 }
-
-
-// BONUS 1:
-// Trasformare la stringa foto in una immagine effettiva
-
-
-// BONUS 2:
-// Organizzare i singoli membri in card/schede
